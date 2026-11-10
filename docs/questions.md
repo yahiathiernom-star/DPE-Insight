@@ -137,3 +137,4 @@ L'évolution des diagnostics enregistrés ne signifie pas automatiquement que le
 L'analyse doit permettre de mieux comprendre les caractéristiques des logements les plus énergivores en Seine-Saint-Denis.
 
 Les résultats serviront à identifier les territoires et les catégories de logements qui pourraient nécessiter une attention prioritaire dans les actions de rénovation énergétique.
+
