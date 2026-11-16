@@ -93,16 +93,16 @@ def download(output: Path, limit: int | None = None) -> tuple[int, str]:
                 if not results:
                     break
                 if any(str(row.get("code_departement_ban", "")) != DEPARTMENT for row in results):
-                    raise ValueError("L’API a renvoyé une ligne hors du département 93.")
+                    raise ValueError("The API returned a record outside department 93.")
                 if limit is not None:
                     results = results[: limit - rows_written]
                 writer.writerows(results)
                 rows_written += len(results)
-                print(f"{rows_written:,} lignes récupérées", flush=True)
+                print(f"{rows_written:,} records downloaded", flush=True)
                 url = page.get("next", "") if limit is None or rows_written < limit else ""
 
         if not rows_written:
-            raise RuntimeError("L’API n’a renvoyé aucune ligne pour le département 93.")
+            raise RuntimeError("The API returned no records for department 93.")
         temp_path.replace(output)
     except Exception:
         temp_path.unlink(missing_ok=True)
@@ -113,12 +113,12 @@ def download(output: Path, limit: int | None = None) -> tuple[int, str]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="Chemin du CSV gzip de sortie")
-    parser.add_argument("--limit", type=int, help="Limiter le nombre de lignes (utile pour un essai rapide)")
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="Path for the output gzip CSV")
+    parser.add_argument("--limit", type=int, help="Limit the number of records (useful for a quick API check)")
     args = parser.parse_args()
 
     if args.limit is not None and args.limit <= 0:
-        parser.error("--limit doit être supérieur à zéro")
+        parser.error("--limit must be greater than zero")
 
     rows, digest = download(args.output, args.limit)
     manifest = {
@@ -133,8 +133,8 @@ def main() -> None:
     basename = args.output.name.removesuffix(".csv.gz")
     manifest_path = args.output.with_name(f"{basename}_manifest.json")
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Fichier : {args.output}")
-    print(f"Manifest : {manifest_path}")
+    print(f"File: {args.output}")
+    print(f"Manifest: {manifest_path}")
     print(f"SHA-256 : {digest}")
 
 
