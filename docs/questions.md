@@ -1,140 +1,109 @@
-# Questions analytiques — DPE-Insight
+# Analytical Questions — DPE-Insight
 
-## 1. Contexte du projet
+## 1. Project context
 
-Le projet DPE-Insight vise à analyser les diagnostics de performance énergétique (DPE) des logements existants dans le département de la Seine-Saint-Denis (93).
+DPE-Insight analyses energy performance certificates (DPEs, France's official certificate system) for existing homes in Seine-Saint-Denis (department 93). The study uses ADEME records for existing homes since July 2021.
 
-L'étude s'appuie sur les données de l'ADEME relatives aux DPE des logements existants depuis juillet 2021.
+The goal is to understand where the most energy-inefficient homes are recorded, which types of homes are most affected, and which characteristics are associated with poor energy performance. The findings should help identify municipalities and housing categories that may deserve priority in energy-renovation programs.
 
-L'objectif est de comprendre où se trouvent les logements les plus énergivores, quels types de logements sont les plus concernés et quelles caractéristiques sont associées aux mauvaises performances énergétiques.
+**Geographic scope:** Seine-Saint-Denis (93).
 
-Les résultats permettront d'identifier les territoires et les catégories de logements qui pourraient être prioritaires dans les actions de rénovation énergétique.
+**Main source:** ADEME, Existing homes DPE records since July 2021.
 
-**Périmètre géographique :** département de la Seine-Saint-Denis (93).
+## 2. Working definition of an energy-inefficient home
 
-**Source :** ADEME — DPE des logements existants depuis juillet 2021.
+For this study, an energy-inefficient home is a DPE with an **energy label of F or G**. This definition refers to the energy label, not the greenhouse-gas label, and must be applied consistently across analyses and visualizations.
 
-## 2. Définition des passoires thermiques
+- **Labels A to E:** not classified as energy-inefficient under this project definition.
+- **Labels F and G:** classified as energy-inefficient under this project definition.
 
-Dans le cadre de cette étude, nous considérons comme passoires thermiques les logements ayant une étiquette énergétique F ou G au diagnostic de performance énergétique (DPE).
+Any relevant changes to DPE regulations or rating thresholds must be checked against ADEME documentation and recorded before comparing periods.
 
-Cette définition sera utilisée de manière identique dans toutes les analyses.
+## 3. Main question
 
-Les logements seront donc répartis en deux groupes :
+**Which municipalities and housing categories should the departmental housing service prioritize when directing energy-renovation support in Seine-Saint-Denis?**
 
-- Classes A à E : logements ne faisant pas partie des passoires thermiques selon notre définition.
-- Classes F et G : passoires thermiques.
+## 4. Business questions
 
-## 3. Question principale
+### Q1 — Geographic distribution
 
-**Quels territoires et quels types de logements doivent être prioritaires dans les actions de rénovation énergétique afin de réduire le nombre de passoires thermiques dans le département de la Seine-Saint-Denis ?**
+Where are F/G DPEs concentrated in the department, both by count and as a share of usable DPEs in each municipality?
 
-## 4. Questions métiers validées
+We will examine two complementary measures:
 
-### Q1 — Concentration géographique des passoires thermiques
+- The number of F/G DPEs recorded in each municipality.
+- The share of usable DPEs in that municipality that are rated F or G.
 
-Où se concentrent les passoires thermiques dans le département ?
+These measures answer different questions: a municipality can have many F/G diagnoses but a lower F/G share than a municipality with fewer diagnoses. DPE counts must not be treated as counts of unique homes.
 
-Deux indicateurs complémentaires seront étudiés :
+### Q2 — Housing type
 
-- Le nombre de diagnostics classés F ou G par territoire.
-- La proportion de diagnostics classés F ou G parmi l'ensemble des diagnostics du territoire.
+Does the share of F/G DPEs differ between detached houses and apartments?
 
-Cette distinction permettra d'identifier les territoires qui comptent le plus de passoires thermiques et ceux qui présentent la plus forte proportion de logements concernés.
+The analysis will compare energy-label distributions by building type, with particular attention to the F/G share.
 
-### Q2 — Types de logements concernés
+### Q3 — Construction period
 
-Quels types de logements sont les plus concernés par les classes énergétiques F et G ?
+How does the share of F/G DPEs vary by housing construction period?
 
-L'analyse portera notamment sur les maisons individuelles et les appartements.
+The analysis will compare energy labels across construction periods and examine whether older homes are more frequently rated F or G.
 
-L'objectif est de comparer la répartition des classes énergétiques selon le type de bâtiment.
+### Q4 — Heating system
 
-### Q3 — Ancienneté des logements
+How do energy labels differ by primary heating energy?
 
-Les logements les plus anciens sont-ils davantage concernés par les passoires thermiques ?
+The analysis will compare heating categories such as fuel oil, direct electric heating, gas, and heat pumps. Any observed association is descriptive and does not establish causation.
 
-L'analyse cherchera à étudier le lien entre la période de construction des logements et leur classe énergétique.
+### Q5 — Change over time
 
-Une attention particulière sera portée aux logements construits avant les premières réglementations thermiques.
+How have the monthly number of DPEs and the share of F/G DPEs changed since July 2021?
 
-### Q4 — Systèmes de chauffage
+The analysis will examine:
 
-Quels systèmes de chauffage sont associés aux plus mauvaises performances énergétiques ?
+- Monthly DPE counts.
+- The distribution of energy labels A to G by month.
+- The monthly share of F/G DPEs.
 
-L'analyse portera notamment sur les systèmes de chauffage suivants :
+Potential regulatory or methodological changes must be considered when interpreting trends.
 
-- Fioul.
-- Électricité par effet Joule.
-- Gaz.
-- Pompe à chaleur.
+## 5. Hypotheses to test
 
-L'objectif est de comparer la proportion de diagnostics classés F ou G selon l'énergie de chauffage principale.
+These hypotheses must be tested against the data; their outcomes are not known in advance.
 
-### Q5 — Évolution temporelle des diagnostics
+- **H1 — Construction period:** Homes built before 1975 have a higher share of F/G DPEs than homes built from 1975 onward. (Q3)
+- **H2 — Housing type:** The share of F/G DPEs differs between detached houses and apartments. (Q2)
+- **H3 — Municipality counts and shares:** Municipalities with the highest number of F/G DPEs are not necessarily those with the highest F/G share. (Q1)
 
-Comment le nombre de diagnostics et la répartition des classes énergétiques ont-ils évolué depuis juillet 2021 ?
+For each hypothesis, report whether the results support it, contradict it, or are inconclusive.
 
-L'analyse portera sur :
+## 6. Indicators
 
-- L'évolution mensuelle du nombre de diagnostics.
-- L'évolution de la répartition des classes énergétiques A à G.
-- L'évolution de la proportion de diagnostics classés F et G.
+- **Number of DPEs:** number of usable DPE records included in the analysis.
+- **Number of F/G DPEs:** number of records with an energy label of F or G.
+- **F/G share:** number of F/G DPEs divided by all usable DPEs in the group, multiplied by 100.
+- **Energy-label distribution:** distribution of DPE records across labels A to G.
+- **Geographic distribution:** F/G counts and shares by municipality.
+- **Construction period:** DPE counts and F/G shares by construction period.
+- **Building type:** comparison of DPE counts and F/G shares for houses and apartments.
+- **Primary heating energy:** comparison of DPE counts and F/G shares by heating-energy category.
+- **Monthly trend:** DPE counts and F/G shares by month.
 
-L'objectif est d'observer les tendances dans les diagnostics enregistrés depuis juillet 2021.
+**Formula:**
 
-## 5. Hypothèses à vérifier
+`F/G share (%) = (number of usable DPEs rated F or G / total usable DPEs in the group) × 100`
 
-Les hypothèses suivantes seront étudiées à partir des données.
+Comparisons between municipalities may also require a normalized indicator, such as a rate relative to the number of main residences, using a join with an INSEE municipality reference table. The join key, unmatched records, and data quality must be checked and documented.
 
-H1 _Les logements les plus anciens, construits avant les premières réglementations thermiques, présentent une proportion de F/G plus élevée que les logements récents. Q3
+## 7. Interpretation limits
 
-H2 _Les logements chauffés au fioul ou à l'électricité par effet Joule présentent une proportion de F/G plus élevée que ceux chauffés au gaz ou par pompe à chaleur.Q4
-
-H3 _Les maisons individuelles présentent une proportion de F/G plus élevée que les appartements.Q2
-
-H4 _La proportion de F/G diminue depuis juillet 2021 parmi les nouveaux diagnostics.Q5
-
-
-6. Indicateurs à calculer
-
-Nombre de diagnostics : Nombre de diagnostics DPE étudiés.
-Nombre de F/G : Nombre de diagnostics ayant une étiquette énergétique F ou G.
-
-Taux de F/G : Proportion de diagnostics F/G dans un groupe donné.
-
-Répartition énergétique : Distribution des diagnostics selon les classes A à G.
-
-Répartition géographique : Nombre et proportion de diagnostics F/G par commune.
-
-Ancienneté : Répartition des diagnostics selon la période de construction.
-
-Type de bâtiment : Comparaison entre maisons et appartements.
-
-Énergie de chauffage : Comparaison selon l'énergie de chauffage principale.
-
-Évolution temporelle : Nombre de diagnostics et proportion de F/G par mois.
-
-Nombre de diagnostics et proportion de F/G par mois.
-
-Formule du taux de passoires thermiques :
-Taux de F/G (%) = (Nombre de diagnostics F ou G / Nombre total de diagnostics du groupe) × 100
-
-7. Limites et précautions d'interprétation
-
-Les données correspondent aux diagnostics enregistrés et ne représentent pas nécessairement l'ensemble du parc immobilier du département.
-
-Un même logement peut posséder plusieurs diagnostics. Le nombre de diagnostics ne doit donc pas être automatiquement assimilé au nombre de logements uniques.
-
-Certaines variables peuvent contenir des valeurs manquantes.
-
-Une association entre une caractéristique du logement et une mauvaise étiquette énergétique ne démontre pas nécessairement un lien de causalité.
-
-L'évolution des diagnostics enregistrés ne signifie pas automatiquement que le parc immobilier réel s'améliore ou se dégrade.
-
-8. Finalité de l'étude
-
-L'analyse doit permettre de mieux comprendre les caractéristiques des logements les plus énergivores en Seine-Saint-Denis.
-
-Les résultats serviront à identifier les territoires et les catégories de logements qui pourraient nécessiter une attention prioritaire dans les actions de rénovation énergétique.
-
+- The data describe recorded diagnoses and do not necessarily represent the department's full housing stock.
+- A home may have more than one DPE; diagnosis counts must not automatically be interpreted as unique-home counts.
+- Some variables may be missing. Missingness and any exclusions must be quantified and documented.
+- Floor areas and energy-consumption values may contain outliers. Any treatment must be justified and recorded in `docs/anomalies.md`.
+- DPE rules, rating thresholds, and methods may change over time; check the ADEME technical documentation before comparing periods.
+- An association between a housing characteristic and a poor energy label does not prove causality.
+- Changes in recorded DPEs do not by themselves show that the actual housing stock is improving or worsening.
+
+## 8. Study purpose
+
+The analysis should provide a clear, documented picture of energy-inefficient DPEs recorded in Seine-Saint-Denis, their geographic distribution, and the housing characteristics associated with them. The findings are intended to inform the departmental housing service as it considers where to direct renovation support.
