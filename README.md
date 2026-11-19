@@ -54,7 +54,15 @@ app/dashboard.py          Streamlit dashboard entry point
 docs/                     Project questions, decisions, anomalies, and post-mortem
 ```
 
-The analysis modules and dashboard are still being built. The data download can be run with the command above; the dashboard is not available yet.
+## Clean the data
+
+```bash
+python src/cleaning.py
+```
+
+This writes `data/processed/dpe_93_clean.csv.gz` and a quality report. No row is removed: anomalies are flagged in `flag_*` columns. See `docs/anomalies.md` and `docs/decisions.md`.
+
+The indicators and dashboard are still being built.
 
 ## Interpretation limits
 
