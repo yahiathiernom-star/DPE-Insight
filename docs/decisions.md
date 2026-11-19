@@ -22,8 +22,12 @@ Output: `data/processed/dpe_93_clean.csv.gz` (one row per DPE) and `dpe_93_clean
 | Outlier thresholds: consumption > 1,000 kWh/m²/year; home floor area < 9 m² or > 500 m² | 9 m² is the minimum floor area for a decent home in France. The other thresholds sit well above the 99.9th percentile. |
 | The last, incomplete month is flagged (`flag_mois_incomplet`) | Prevents a false drop at the end of monthly series. |
 
+## 2026-11-19 — Anomaly log format
+
+`anomalies.md` follows the format of the specification (section 8): one entry per anomaly (ANO-01 to ANO-15) with columns, description, extent, probable cause, treatment and impact. Added the checks that were missing: disguised missing values (ANO-08), series breaks (ANO-12, ANO-13) and coverage (ANO-14).
+
 ## Open points for the team
 
 - **Hypotheses differ between documents.** `questions.md` has H1 (before/after 1975), H2 (houses vs. apartments) and H3 (municipality count vs. share). The team brief also lists a heating hypothesis (fuel oil / direct electric vs. gas / heat pump) and a trend hypothesis (F/G share decreasing since July 2021). Pick one list and update `questions.md`.
-- **Heating hypothesis.** `type_energie_principale_chauffage` does not separate direct electric heating from heat pumps: both are `Électricité`. Testing this as worded requires an extra ADEME field such as the heating generator type, which means changing `download.py` and downloading again.
-- **Regulatory changes for Q5.** Check the ADEME documentation for label rule changes during the period, for example the adjusted thresholds for small homes and the change to the electricity conversion factor. They can move F/G shares without any change to the homes themselves.
+- **Heating hypothesis.** `type_energie_principale_chauffage` does not separate direct electric heating from heat pumps: both are `Électricité` (ANO-15). Either reword it by energy (fuel oil / electricity vs. gas / heat network), or add an ADEME field such as the heating generator type, which means changing `download.py` and downloading again.
+- **Regulatory changes for Q5.** Two series breaks are documented in `anomalies.md` (ANO-12, July 2024; ANO-13, January 2026). Their dates must be confirmed in the ADEME documentation before interpreting the trend.
